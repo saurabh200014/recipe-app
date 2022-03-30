@@ -31,6 +31,17 @@ const App=()=>{
   }
   return(
     <div className="App">
+     
+      
+        if('serviceWorker' in navigator){
+          navigator.serviceWorker.register('/sw.js').then((resp)=>{
+            console.warn("resp",resp)
+          }).catch((e)=>{console.error(e)})
+        }else{
+          console.error("sw not working")
+        }
+      
+     
       <form onSubmit={getSearch} className="search-form">
         <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
         <button  className="search-button" type="submit">Search</button>
